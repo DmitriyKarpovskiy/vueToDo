@@ -12,14 +12,13 @@ class UserController {
 
     async register({ request }) {
         const { email, password } = request.all();
-        console.log(email, password);
-        const user = await User.create({
+        await User.create({
             email,
             password,
             username: email,
         });
 
-        return user
+        return this.login(...arguments);
     }
 }
 
